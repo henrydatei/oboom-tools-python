@@ -7,7 +7,7 @@ I also made a shell version of this repo, see [https://github.com/henrydatei/obo
 
 For the documentation please visit the wiki!
 
-*Imprortant: All the scripts will get your credetials from a file `account.txt`. You need to create such a file with the following structure:*
+**Imprortant: All the scripts will get your credetials from a file `account.txt`. You need to create such a file with the following structure:**
 ```
 email
 password
