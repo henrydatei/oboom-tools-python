@@ -23,6 +23,6 @@ def downloadFileAndSaveToDisk(fileID):
     infos = json.loads(getFileInformation(session, fileID))
     name = infos[1][0]['name']
 
-    f = open(name, "w+")
+    f = open(name, "wb")
     filedata = downloadFile(server, ticket)
     f.write(filedata)
