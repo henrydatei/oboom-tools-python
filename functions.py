@@ -10,7 +10,13 @@ def getSession(username, password):
     session = JSON[1]['session']
     return session
 
-def downloadFileAndSaveToDisk(session, fileID):
+file = open("account.txt", "r")
+logindata = file.read().splitlines()
+username = logindata[0]
+password = logindata[1]
+session = getSession(username, password)
+
+def downloadFileAndSaveToDisk(fileID):
     downloadInfos = json.loads(createDownloadTicket(session, fileID))
     server = downloadInfos[1]
     ticket = downloadInfos[2]
