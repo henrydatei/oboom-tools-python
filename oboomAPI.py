@@ -80,7 +80,7 @@ def createDownloadTicket(session, fileID):
 
 def downloadFile(domain, ticket):
     parameters = {"ticket": ticket}
-    req = requests.get('https://{}/dlh'.format(domain), params=parameters)
+    req = requests.get('https://{}/1/dlh'.format(domain), params=parameters)
     req.raise_for_status()
     return req.content
 
