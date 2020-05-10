@@ -2,6 +2,7 @@ from oboomAPI import *
 import hashlib
 import binascii
 import json
+import os.path
 
 def getSession(username, password):
     passwordhashBytes = hashlib.pbkdf2_hmac('sha1', password.encode(), password[::-1].encode(), 1000, 16)
@@ -22,7 +23,16 @@ def downloadFileAndSaveToDisk(fileID):
     ticket = downloadInfos[2]
     infos = json.loads(getFileInformation(session, fileID))
     name = infos[1][0]['name']
-
-    f = open(name, "wb")
-    filedata = downloadFile(server, ticket)
-    f.write(filedata)
+    
+    if os.path.exists(name):
+        print('Skipping: File already downloaded: ' + name)
+    
+    else:
+        filedata = downloadFile(server, ticket)
+        if filedata == '[503,"download"]':
+            print('Error for ' + name)
+        else:
+            f = open(name, "wb")
+            f.write(filedata)
+            print('File successfully downloaded: ' + name)
+    

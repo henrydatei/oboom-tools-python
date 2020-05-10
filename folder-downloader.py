@@ -14,5 +14,3 @@ for file in data[2]:
 print(fileIDs)
 
 results = ThreadPool(int(threads)).imap_unordered(downloadFileAndSaveToDisk, fileIDs)
-for path in results:
-    print(path)
